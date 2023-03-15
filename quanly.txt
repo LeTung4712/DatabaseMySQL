@@ -1,0 +1,81 @@
+drop database quanly;
+create database quanly;
+use quanly;
+
+create table sinhvien(
+CCCD     int not null,
+HoTen    varchar(45),
+NgaySinh date,
+GioiTinh varchar(3),
+sdt      varchar(11),
+Truong   varchar(100),
+Nganh    varchar(100),
+MSSV     varchar(45),
+HoKhau   varchar(100),
+primary key (CCCD)
+);
+
+create table thongtinkhancap(
+CCCD int,
+TenThanNhan1 varchar(45),
+sdt1 int,
+TenThanNhan2 varchar(45),
+sdt2 int,
+primary key (CCCD),
+foreign key (CCCD) references sinhvien(CCCD)
+);
+
+create table nhanvien(
+MSNV     varchar(45) not null,
+HoTen    varchar(45),
+NgaySinh date,
+GioiTinh varchar(45),
+DiaChi   varchar(100),
+ChucVu   varchar(45),
+sdt      varchar(11),
+primary key (MSNV)
+);
+
+create table phong(
+SoPhong int not null,
+KhuNha  varchar(45) not null,
+SoLuongSinhVien int,
+TinhTrangPhong  varchar(100),
+MSNV varchar(45) not null,
+primary key (SoPhong,KhuNha),
+constraint fk_nv1 foreign key(MSNV) references nhanvien(MSNV)
+);
+
+create table hopdong(
+MaHopDong int not null,
+CCCD      int not null,
+NgayLap     date,
+NgayKetThuc date,
+SoPhong   int,
+KhuNha    varchar(45),
+MSNV        varchar(45),
+primary key(mahopdong),
+constraint fk_cd1 foreign key(CCCD)    references sinhvien(CCCD),
+constraint fk_kn1 foreign key(SoPhong,KhuNha)  references phong(SoPhong,KhuNha),
+constraint fk_nv2 foreign key(MSNV)    references nhanvien(MSNV)
+);
+
+create table hoadon(
+MSHDDien varchar(45) not null,
+MSHDNuoc varchar(45) not null,
+MSNV    varchar(45),
+SoPhong int,
+KhuNha  varchar(45),
+NgayLapHoaDon date,
+DienDauThang  int,
+DienCuoiThang int,
+NuocDauThang  int,
+NuocCuoiThang int,
+Thang         int,
+Nam           int,
+TienDien      decimal(18,2),
+TienNuoc      decimal(18,2),
+primary key (MSHDDien,MSHDNuoc),
+constraint fk_kn2 foreign key(SoPhong,KhuNha) references phong(SoPhong,KhuNha),
+constraint fk_nv3 foreign key(MSNV)    references nhanvien(MSNV)
+);

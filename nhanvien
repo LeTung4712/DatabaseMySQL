@@ -1,0 +1,9 @@
+insert into nhanvien
+values
+('NV1','Vu Ngoc Anh','1981-12-25','nu','Nghe An','NhanVienQuanLi','0371368522'),
+('NV2','Ly Trong Minh','1988-12-10','nam','Quang Ninh','NhanVienQuanLi','0154694298'),
+('NV3','Ngo Bao Manh','1983-04-30','nam','Nam Dinh','NhanVienQuanLi','0173828067'),
+('NV4','Do Van Toan','1982-05-10','nam','Lai Chau','NhanVienQuanLi','0118610794'),
+('NV5','Duong Quoc Đat','1977-03-25','nam','Nghe An','NhanVienQuanLi','0125258822'),
+('NV6','Nguyen Bao Đat','1989-03-31','nam','Bac Ninh','NhanVienQuanLi','0188812718'),
+('NV7','Duong Hoang Hoa','1977-03-14','nu','Bac Ninh','NhanVienQuanLi','0331243906');
